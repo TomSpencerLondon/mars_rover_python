@@ -9,4 +9,7 @@ class Rover(object):
         if self.facing == 'N':
             return replace(self, facing='E')
 
-        return replace(self, facing='S')
+        if self.facing == 'E':
+            return replace(self, facing='S')
+
+        return replace(self, facing='W')
