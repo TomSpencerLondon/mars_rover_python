@@ -1,13 +1,6 @@
 import unittest
-from dataclasses import dataclass, replace
 
-
-@dataclass(frozen=True)
-class Rover(object):
-    facing: str
-
-    def go(self, instruction):
-        return replace(self, facing='E')
+from mars_rover import Rover
 
 
 class MarsRoverTest(unittest.TestCase):
@@ -16,7 +9,10 @@ class MarsRoverTest(unittest.TestCase):
         rover = rover.go('R')
         self.assertEqual('E', rover.facing)
 
-
+    def test_turn_right_E_to_S(self):
+        rover = Rover('E')
+        rover = rover.go('R')
+        self.assertEqual('S', rover.facing)
 
 if __name__ == '__main__':
     unittest.main()
