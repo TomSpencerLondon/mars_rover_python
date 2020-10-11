@@ -1,23 +1,21 @@
 import unittest
 
+from parameterized import parameterized
+
 from mars_rover import Rover
 
 
 class MarsRoverTest(unittest.TestCase):
-    def test_turn_right_N_to_E(self):
-        rover = Rover('N')
+    @parameterized.expand([
+        ('N', 'E'),
+        ('E', 'S'),
+        ('S', 'W'),
+        ('W', 'N')
+    ])
+    def test_turn_right_clockwise(self, starts_facing, ends_facing):
+        rover = Rover(starts_facing)
         rover = rover.go('R')
-        self.assertEqual('E', rover.facing)
-
-    def test_turn_right_E_to_S(self):
-        rover = Rover('E')
-        rover = rover.go('R')
-        self.assertEqual('S', rover.facing)
-
-    def test_turn_right_S_to_W(self):
-        rover = Rover('S')
-        rover = rover.go('R')
-        self.assertEqual('W', rover.facing)
+        self.assertEqual(ends_facing, rover.facing)
 
 
 if __name__ == '__main__':
