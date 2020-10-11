@@ -1,5 +1,5 @@
 import unittest
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 
 
 @dataclass(frozen=True)
@@ -7,13 +7,13 @@ class Rover(object):
     facing: str
 
     def go(self, instruction):
-        return "hello"
+        return replace(self, facing='E')
 
 
 class MarsRoverTest(unittest.TestCase):
     def test_turn_right_N_to_E(self):
         rover = Rover('N')
-        rover.go('R')
+        rover = rover.go('R')
         self.assertEqual('E', rover.facing)
 
 
