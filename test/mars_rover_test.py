@@ -14,5 +14,6 @@ class MarsRoverTest(unittest.TestCase):
         rover = rover.go('R')
         self.assertEqual('S', rover.facing)
 
+
 if __name__ == '__main__':
     unittest.main()

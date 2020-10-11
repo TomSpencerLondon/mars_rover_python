@@ -1,5 +1,6 @@
 from dataclasses import dataclass, replace
 
+
 @dataclass(frozen=True)
 class Rover(object):
     facing: str
@@ -8,5 +9,4 @@ class Rover(object):
         if self.facing == 'N':
             return replace(self, facing='E')
 
-        return replace(self, facing = 'S')
-
+        return replace(self, facing='S')
