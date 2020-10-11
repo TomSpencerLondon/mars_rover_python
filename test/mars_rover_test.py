@@ -7,7 +7,7 @@ class Rover(object):
     facing: str
 
     def go(self, instruction):
-        pass
+        return "hello"
 
 
 class MarsRoverTest(unittest.TestCase):
